@@ -51,7 +51,7 @@ const Dashboard = () => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="card">
+        <Link to="/exam-results" className="card hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer">
           <div className="flex items-center">
             <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900">
               <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,9 +63,9 @@ const Dashboard = () => {
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{getGrade(percentage)}</p>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="card">
+        <Link to="/fees" className="card hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer">
           <div className="flex items-center">
             <div className="p-3 rounded-full bg-green-100 dark:bg-green-900">
               <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,9 +77,9 @@ const Dashboard = () => {
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalFees - pendingFees}/{totalFees}</p>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="card">
+        <Link to="/notifications" className="card hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer">
           <div className="flex items-center">
             <div className="p-3 rounded-full bg-yellow-100 dark:bg-yellow-900">
               <svg className="w-6 h-6 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,9 +91,9 @@ const Dashboard = () => {
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{notifications.length}</p>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="card">
+        <Link to="/syllabus" className="card hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer">
           <div className="flex items-center">
             <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900">
               <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,68 +105,31 @@ const Dashboard = () => {
               <p className="text-2xl font-bold text-gray-900 dark:text-white">5</p>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
 
-      {/* Quick Actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Notifications */}
-        <div className="card">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Notifications</h3>
-            <Link to="/notifications" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-medium">
-              View all
-            </Link>
-          </div>
-          <div className="space-y-3">
-            {recentNotifications.map((notification) => (
-              <div key={notification.id} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                    {notification.title}
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {new Date(notification.date).toLocaleDateString()}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Recent Notifications */}
+      <div className="card">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Notifications</h3>
+          <Link to="/notifications" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 text-sm font-medium">
+            View all
+          </Link>
         </div>
-
-        {/* Quick Links */}
-        <div className="card">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-2 gap-3">
-            <Link to="/syllabus" className="flex items-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors duration-200">
-              <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-              <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Syllabus</span>
-            </Link>
-            
-            <Link to="/exam-results" className="flex items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors duration-200">
-              <svg className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              <span className="text-sm font-medium text-green-700 dark:text-green-300">Results</span>
-            </Link>
-            
-            <Link to="/fees" className="flex items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors duration-200">
-              <svg className="w-5 h-5 text-yellow-600 dark:text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-              </svg>
-              <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">Fees</span>
-            </Link>
-            
-            <Link to="/notifications" className="flex items-center p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors duration-200">
-              <svg className="w-5 h-5 text-purple-600 dark:text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4.19 4.19A2 2 0 006 3h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2z" />
-              </svg>
-              <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Alerts</span>
-            </Link>
-          </div>
+        <div className="space-y-3">
+          {recentNotifications.map((notification) => (
+            <div key={notification.id} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2"></div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                  {notification.title}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {new Date(notification.date).toLocaleDateString()}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
